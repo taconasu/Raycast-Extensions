@@ -1,0 +1,81 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "akashi-puncher",
+  "title": "AKASHI Puncher",
+  "description": "Punching with AKASHI API👊",
+  "icon": "extension-icon.png",
+  "author": "tacona",
+  "categories": [
+    "Applications"
+  ],
+  "preferences": [
+    {
+      "name": "Domain",
+      "title": "AKASHI Domain",
+      "description": "利用しているAKASHIのドメインを選択してください",
+      "type": "dropdown",
+      "data": [
+        {
+          "title": "atnd.ak4.jp",
+          "value": "atnd.ak4.jp"
+        },
+        {
+          "title": "atnd-awj.ak4.jp",
+          "value": "atnd-awj.ak4.jp"
+        }
+      ],
+      "required": true
+    },
+    {
+      "name": "CompanyId",
+      "type": "textfield",
+      "title": "企業ID",
+      "required": true,
+      "description": "AKASHIの企業IDをを登録してください"
+    },
+    {
+      "name": "APIToken",
+      "type": "textfield",
+      "title": "AKASHI API Token",
+      "required": true,
+      "description": "AKASHIのAPIトークンを登録してください"
+    }
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "akashi-shukkin",
+      "title": "AKASHI 出勤",
+      "description": "現在時刻で出勤打刻を行ないます",
+      "mode": "no-view"
+    },
+    {
+      "name": "akashi-taikin",
+      "title": "AKASHI 退勤",
+      "description": "現在時刻で退勤打刻を行ないます",
+      "mode": "no-view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.87.5",
+    "@raycast/utils": "^1.17.0",
+    "axios": "^1.7.9"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.11",
+    "@types/node": "20.8.10",
+    "@types/react": "18.3.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  },
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab"
+}
