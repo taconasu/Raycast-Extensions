@@ -5,6 +5,7 @@
   "description": "Punching with AKASHI API👊",
   "icon": "extension-icon.png",
   "author": "tacona",
+  "access": "public",
   "categories": [
     "Applications"
   ],
