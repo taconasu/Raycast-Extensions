@@ -1,10 +1,11 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "akashi-puncher",
-  "title": "Akashi Puncher",
+  "title": "AKASHI Puncher",
   "description": "Punching with AKASHI API👊",
   "icon": "extension-icon.png",
   "author": "tacona",
+  "owner": "cerisier*",
   "access": "public",
   "categories": [
     "Applications"
@@ -46,13 +47,13 @@
   "commands": [
     {
       "name": "akashi-shukkin",
-      "title": "Akashi Punch-in",
+      "title": "AKASHI 出勤",
       "description": "現在時刻で出勤打刻を行ないます",
       "mode": "no-view"
     },
     {
       "name": "akashi-taikin",
-      "title": "Akashi Punch-out",
+      "title": "AKASHI 退勤",
       "description": "現在時刻で退勤打刻を行ないます",
       "mode": "no-view"
     }
