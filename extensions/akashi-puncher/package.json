@@ -75,7 +75,7 @@
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
-    "publish": "npx @raycast/api@1.87.5 publish"
+    "publish": "npx @raycast/api@latest publish"
   },
   "volta": {
     "node": "22.12.0"
