@@ -55,6 +55,12 @@
       "title": "AKASHI 退勤",
       "description": "現在時刻で退勤打刻を行ないます",
       "mode": "no-view"
+    },
+    {
+      "name": "akashi-stamp",
+      "title": "AKASHI 打刻",
+      "description": "現在時刻で任意の打刻種別で打刻を行ないます",
+      "mode": "view"
     }
   ],
   "dependencies": {
