@@ -12,6 +12,10 @@ export type RecordsResponse = {
       working_day_category: number;
       start_time: string;
       end_time: string;
+      break_time_results: Array<{
+        result_break_time_start_time: string;
+        result_break_time_end_time: string;
+      }>;
     }>;
   }>;
 };

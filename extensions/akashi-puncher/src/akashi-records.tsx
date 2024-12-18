@@ -33,6 +33,13 @@ const Records = () => {
           {workingRecords.map((record) => (
             <List.Section key={record.date} title={record.date}>
               {record.start_time && <List.Item title={`🏃‍♂️ 出勤: ${dayjs(record.start_time).format("HH:mm")}`} />}
+              {record.break_time_results.length > 0 &&
+                record.break_time_results.map((breakTime, breakIndex) => (
+                  <List.Item
+                    key={breakIndex}
+                    title={`☕️ 休憩: ${dayjs(breakTime.result_break_time_start_time).format("HH:mm")} - ${dayjs(breakTime.result_break_time_end_time).format("HH:mm")}`}
+                  />
+                ))}
               {record.end_time && <List.Item title={`🚗 退勤: ${dayjs(record.end_time).format("HH:mm")}`} />}
             </List.Section>
           ))}

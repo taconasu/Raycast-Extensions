@@ -10,6 +10,6 @@ export const PATH = {
       endDate: string,
       target: string,
     ) =>
-      `https://${domain}/api/cooperation/${companyId}/working_records?token=${token}&start_date=${startDate}&end_date=${endDate}&staff_ids=${target}`,
+      `https://${domain}/api/cooperation/${companyId}/working_records?token=${token}&start_date=${startDate}&end_date=${endDate}&staff_ids=${target}&include_break_results=1`,
   },
 };
