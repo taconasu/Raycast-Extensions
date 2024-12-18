@@ -1,7 +1,7 @@
 import { getPreferenceValues } from "@raycast/api";
 
 import { STAMP_TYPE } from "./constants";
-import { stamp } from "./repositories/akashi/stampRepository";
+import { postStamp } from "./repositories/akashi/stampRepository";
 
 /**
  * AKASHI 打刻実行 APIによる退勤を実行
@@ -10,5 +10,5 @@ import { stamp } from "./repositories/akashi/stampRepository";
 export default async function main() {
   const { Domain, CompanyId, APIToken } = getPreferenceValues<Preferences.AkashiTaikin>();
 
-  await stamp(Domain, CompanyId, APIToken, STAMP_TYPE.PUNCH_OUT, "退勤時刻");
+  await postStamp(Domain, CompanyId, APIToken, STAMP_TYPE.PUNCH_OUT, "退勤時刻");
 }

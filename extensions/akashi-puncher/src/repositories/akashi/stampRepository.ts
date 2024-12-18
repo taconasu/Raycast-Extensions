@@ -3,7 +3,11 @@ import { showToast, Toast } from "@raycast/api";
 
 import { PATH, StampType } from "../../constants";
 
-export const stamp = async (
+/**
+ * AKASHI 打刻実行 APIによる打刻を実行
+ * https://akashi.zendesk.com/hc/ja/articles/115000475854-AKASHI-%E5%85%AC%E9%96%8BAPI-%E4%BB%95%E6%A7%98
+ */
+export const postStamp = async (
   domain: string,
   companyId: string,
   token: string,

@@ -1,7 +1,7 @@
 import { Action, ActionPanel, Form, getPreferenceValues } from "@raycast/api";
 import { FormValidation, useForm } from "@raycast/utils";
 import { STAMP_TYPE, StampType } from "./constants";
-import { stamp } from "./repositories/akashi/stampRepository";
+import { postStamp } from "./repositories/akashi/stampRepository";
 import { STAMP_TYPE_LABELS } from "./constants/StampType";
 
 type StampFormValues = {
@@ -14,7 +14,7 @@ const Main = () => {
   const { handleSubmit, itemProps } = useForm<StampFormValues>({
     onSubmit: async (values) => {
       // FIXME: Form.Dropdownがstring型しか許容しないため、暫定的に無理やりキャストしている
-      await stamp(Domain, CompanyId, APIToken, values.type as unknown as StampType, "時刻");
+      await postStamp(Domain, CompanyId, APIToken, values.type as unknown as StampType, "時刻");
     },
     validation: {
       type: FormValidation.Required,
