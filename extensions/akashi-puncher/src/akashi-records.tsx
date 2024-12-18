@@ -30,7 +30,7 @@ const Records = () => {
         <List.EmptyView title="No Working Records Data" />
       ) : (
         <>
-          {workingRecords.map((record) => (
+          {workingRecords.toReversed().map((record) => (
             <List.Section key={record.date} title={record.date}>
               {record.start_time && <List.Item title={`🏃‍♂️ 出勤: ${dayjs(record.start_time).format("HH:mm")}`} />}
               {record.break_time_results.length > 0 &&
