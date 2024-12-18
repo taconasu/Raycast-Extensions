@@ -61,12 +61,19 @@
       "title": "AKASHI 打刻",
       "description": "現在時刻で任意の打刻種別で打刻を行ないます",
       "mode": "view"
+    },
+    {
+      "name": "akashi-records",
+      "title": "AKASHI 勤怠実績",
+      "description": "当月の勤怠実績を表示します",
+      "mode": "view"
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.88.3",
     "@raycast/utils": "^1.17.0",
-    "axios": "^1.7.9"
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.11",
