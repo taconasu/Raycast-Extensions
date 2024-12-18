@@ -32,8 +32,8 @@ const Records = () => {
         <>
           {workingRecords.map((record) => (
             <List.Section key={record.date} title={record.date}>
-              {record.start_time && <List.Item title={`出勤: ${record.start_time}`} />}
-              {record.end_time && <List.Item title={`退勤: ${record.end_time}`} />}
+              {record.start_time && <List.Item title={`🏃‍♂️ 出勤: ${dayjs(record.start_time).format("HH:mm")}`} />}
+              {record.end_time && <List.Item title={`🚗 退勤: ${dayjs(record.end_time).format("HH:mm")}`} />}
             </List.Section>
           ))}
         </>
