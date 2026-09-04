@@ -2,6 +2,7 @@ export const PATH = {
   akashi: {
     staff: (domain: string, companyId: string) => `https://${domain}/api/cooperation/${companyId}/staffs/`,
     stamp: (domain: string, companyId: string) => `https://${domain}/api/cooperation/${companyId}/stamps`,
+    reissueToken: (domain: string, companyId: string) => `https://${domain}/api/cooperation/token/reissue/${companyId}`,
     workingRecords: (
       domain: string,
       companyId: string,

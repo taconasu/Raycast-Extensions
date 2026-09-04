@@ -2,6 +2,7 @@ import { getPreferenceValues } from "@raycast/api";
 
 import { STAMP_TYPE } from "./constants";
 import { postStamp } from "./repositories/akashi/stampRepository";
+import { getActiveToken } from "./repositories/akashi/tokenRepository";
 
 /**
  * AKASHI 打刻実行 APIによる出勤を実行
@@ -9,6 +10,7 @@ import { postStamp } from "./repositories/akashi/stampRepository";
  */
 export default async function main() {
   const { Domain, CompanyId, APIToken } = getPreferenceValues<Preferences.AkashiTaikin>();
+  const activeToken = await getActiveToken(Domain, CompanyId, APIToken);
 
-  await postStamp(Domain, CompanyId, APIToken, STAMP_TYPE.PUNCH_IN, "出勤時刻");
+  await postStamp(Domain, CompanyId, activeToken, STAMP_TYPE.PUNCH_IN, "出勤時刻");
 }

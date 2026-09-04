@@ -3,6 +3,7 @@ import { FormValidation, useForm } from "@raycast/utils";
 import { STAMP_TYPE, StampType } from "./constants";
 import { postStamp } from "./repositories/akashi/stampRepository";
 import { STAMP_TYPE_LABELS } from "./constants/StampType";
+import { getActiveToken } from "./repositories/akashi/tokenRepository";
 
 type StampFormValues = {
   type: string;
@@ -13,8 +14,9 @@ const Main = () => {
 
   const { handleSubmit, itemProps } = useForm<StampFormValues>({
     onSubmit: async (values) => {
+      const activeToken = await getActiveToken(Domain, CompanyId, APIToken);
       // FIXME: Form.Dropdownがstring型しか許容しないため、暫定的に無理やりキャストしている
-      await postStamp(Domain, CompanyId, APIToken, values.type as unknown as StampType, "時刻");
+      await postStamp(Domain, CompanyId, activeToken, values.type as unknown as StampType, "時刻");
     },
     validation: {
       type: FormValidation.Required,

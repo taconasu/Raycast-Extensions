@@ -4,6 +4,7 @@ import { Action, ActionPanel, getPreferenceValues, List } from "@raycast/api";
 import { useMemo } from "react";
 import { dayjs } from "./lib/dayjs";
 import { PATH } from "./constants";
+import { getActiveToken } from "./repositories/akashi/tokenRepository";
 
 const RecordActionPanel = () => (
   <ActionPanel title="">
@@ -14,13 +15,23 @@ const RecordActionPanel = () => (
 
 const Records = () => {
   const { Domain, CompanyId, APIToken } = getPreferenceValues<Preferences.AkashiRecords>();
-  const { data, isLoading: isMeLoading } = usePromise(fetchMe, [Domain, CompanyId, APIToken]);
+  const { data: activeToken, isLoading: isTokenLoading } = usePromise(getActiveToken, [Domain, CompanyId, APIToken]);
+  const { data, isLoading: isMeLoading } = usePromise(fetchMe, [Domain, CompanyId, activeToken || ""], {
+    execute: !!activeToken,
+  });
   const currentStartDate = dayjs().startOf("month").format("YYYYMMDD");
   const currentEndDate = dayjs().endOf("month").format("YYYYMMDD");
   const { data: records, isLoading } = useFetch<RecordsResponse>(
-    PATH.akashi.workingRecords(Domain, CompanyId, APIToken, currentStartDate, currentEndDate, data?.staffId || ""),
+    PATH.akashi.workingRecords(
+      Domain,
+      CompanyId,
+      activeToken || "",
+      currentStartDate,
+      currentEndDate,
+      data?.staffId || "",
+    ),
     {
-      execute: !!data,
+      execute: !!activeToken && !!data,
     },
   );
 
@@ -32,7 +43,7 @@ const Records = () => {
   }, [records]);
 
   return (
-    <List isLoading={isMeLoading || isLoading}>
+    <List isLoading={isTokenLoading || isMeLoading || isLoading}>
       {workingRecords.length === 0 ? (
         <List.EmptyView title="No Working Records Data" />
       ) : (
